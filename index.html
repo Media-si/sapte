@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#EFE9DC"/>
+<title>Ava Reyes — Brand Designer &amp; Art Director</title>
+<meta name="description" content="Portfolio card of Ava Reyes — independent brand designer and art director."/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1' stroke='%23E24E1B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --paper:#EFE9DC;
+    --ink:#17130F;
+    --ink-55:rgba(23,19,15,.55);
+    --ink-35:rgba(23,19,15,.35);
+    --line:rgba(23,19,15,.16);
+    --accent:#E24E1B;
+    --paper-62:rgba(239,233,220,.62);
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
+    --sans:'Space Grotesk',system-ui,sans-serif;
+    --serif:'Fraunces',Georgia,serif;
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{color-scheme:light}
+  html,body{height:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--accent);color:var(--paper)}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* ---------- ambient layers ---------- */
+  .dotgrid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:radial-gradient(rgba(23,19,15,.10) 1px,transparent 1.4px);
+    background-size:28px 28px;
+    -webkit-mask-image:radial-gradient(ellipse at center,#000 38%,transparent 80%);
+            mask-image:radial-gradient(ellipse at center,#000 38%,transparent 80%);
+  }
+  .grain{
+    position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:160px 160px;
+  }
+
+  /* ---------- intro curtain ---------- */
+  .curtain{position:fixed;inset:-2% 0;z-index:80;pointer-events:none;transform:translateY(0)}
+  .curtain.a{background:var(--accent);z-index:81;animation:curtain .7s cubic-bezier(.76,0,.24,1) .05s forwards}
+  .curtain.b{background:var(--ink);animation:curtain .7s cubic-bezier(.76,0,.24,1) .2s forwards}
+  @keyframes curtain{to{transform:translateY(-104%)}}
+
+  /* ---------- corner crop marks ---------- */
+  .crop{position:fixed;width:16px;height:16px;z-index:40;pointer-events:none;opacity:.55}
+  .crop.tl{top:12px;left:12px;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+  .crop.tr{top:12px;right:12px;border-top:1px solid var(--ink);border-right:1px solid var(--ink)}
+  .crop.bl{bottom:52px;left:12px;border-bottom:1px solid var(--ink);border-left:1px solid var(--ink)}
+  .crop.br{bottom:52px;right:12px;border-bottom:1px solid var(--ink);border-right:1px solid var(--ink)}
+
+  /* ---------- top bar ---------- */
+  .bar{
+    position:fixed;top:0;left:0;right:0;z-index:30;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 28px;
+    font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+    animation:fadeUp .7s ease .8s both;
+  }
+  .brandmark{display:flex;align-items:center;gap:10px;color:var(--ink)}
+  .brandmark svg{width:15px;height:15px;color:var(--accent)}
+  .brandmark span em{font-style:normal;color:var(--ink-55)}
+  .meta{display:flex;align-items:center;gap:14px}
+  .meta .div{width:1px;height:12px;background:var(--line)}
+  .meta .mut{color:var(--ink-55)}
+  .status{display:flex;align-items:center;gap:8px}
+  .status .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);position:relative;flex:none}
+  .status .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ping 2.2s ease-out infinite}
+  @keyframes ping{0%{transform:scale(1);opacity:.65}80%,100%{transform:scale(3);opacity:0}}
+  #clock{font-variant-numeric:tabular-nums}
+
+  /* ---------- edge notes ---------- */
+  .side-note{
+    position:fixed;top:50%;z-index:20;pointer-events:none;
+    writing-mode:vertical-rl;font:500 9.5px var(--mono);
+    letter-spacing:.24em;text-transform:uppercase;color:var(--ink-55);
+    animation:fadeUp .8s ease 1s both;
+  }
+  .side-note.l{left:20px;transform:translateY(-50%) rotate(180deg)}
+  .side-note.r{right:20px;transform:translateY(-50%)}
+  .note{
+    position:fixed;bottom:60px;z-index:20;pointer-events:none;
+    font:500 9.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-55);line-height:1.8;animation:fadeUp .8s ease 1.05s both;
+  }
+  .note.l{left:26px}
+  .note.r{right:26px;text-align:right}
+
+  /* ---------- stage ---------- */
+  .stage{
+    position:fixed;inset:0;z-index:2;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:22px;padding:80px 24px 96px;
+  }
+  .ghost{
+    position:absolute;left:50%;top:46%;z-index:1;pointer-events:none;user-select:none;
+    font-family:var(--serif);font-style:italic;font-weight:600;
+    font-size:clamp(110px,28vw,420px);line-height:1;letter-spacing:-.02em;white-space:nowrap;
+    color:transparent;-webkit-text-stroke:1.5px rgba(23,19,15,.13);
+    transform:translate(calc(-50% + var(--px,0px)),calc(-50% + var(--py,0px)));
+    animation:ghostIn 1.2s ease .65s both;
+  }
+  @keyframes ghostIn{from{opacity:0}}
+
+  .scene{position:relative;z-index:2;perspective:1400px}
+  .shadow{
+    position:absolute;left:50%;bottom:-42px;width:72%;height:30px;border-radius:50%;
+    background:rgba(23,19,15,.30);filter:blur(22px);
+    transform:translateX(-50%);
+  }
+  .enter{animation:enter 1s cubic-bezier(.22,1,.36,1) .5s both}
+  @keyframes enter{from{opacity:0;transform:translateY(36px) scale(.97)}}
+  .float{animation:float 7s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
+
+  .tilt{transform-style:preserve-3d;-webkit-transform-style:preserve-3d;will-change:transform}
+  .stack{position:absolute;inset:0;border-radius:var(--r);background:var(--ink)}
+  .stack.s1{transform:translate(12px,14px) rotate(1.4deg);opacity:.10}
+  .stack.s2{transform:translate(-9px,10px) rotate(-1deg);opacity:.055}
+
+  /* ---------- the card ---------- */
+  .card{
+    position:relative;
+    width:min(560px,88vw,74vh);
+    aspect-ratio:1.72;
+    container-type:inline-size;
+  }
+  .flip{
+    position:absolute;inset:0;cursor:pointer;user-select:none;-webkit-user-select:none;
+    transform-style:preserve-3d;-webkit-transform-style:preserve-3d;
+    transition:transform .78s cubic-bezier(.3,.7,.2,1);
+    border-radius:var(--r);
+  }
+  .flip.flipped{transform:rotateY(180deg)}
+  .flip:focus-visible{outline:2px solid var(--accent);outline-offset:8px;border-radius:var(--r)}
+
+  .face{
+    position:absolute;inset:0;border-radius:var(--r);
+    backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    display:flex;flex-direction:column;
+    padding:clamp(16px,4.4cqw,24px) clamp(18px,5cqw,27px);
+  }
+  .face.front{
+    background:var(--ink);color:var(--paper);
+    transform:rotateY(0deg) translateZ(2px);
+    box-shadow:0 30px 60px -26px rgba(23,19,15,.55);
+    overflow:visible;
+  }
+  .face.back{
+    background:var(--paper);color:var(--ink);
+    transform:rotateY(180deg) translateZ(2px);
+    border:1px solid var(--line);
+    box-shadow:0 30px 60px -30px rgba(23,19,15,.4),inset 0 0 0 1px rgba(23,19,15,.05);
+    visibility:hidden;transition:visibility 0s .45s;
+    overflow:hidden;
+  }
+  .flip.flipped .back{visibility:visible;transition-delay:0s}
+  .face.front{pointer-events:auto}
+  .face.back{pointer-events:none}
+  .flip.flipped .front{pointer-events:none}
+  .flip.flipped .back{pointer-events:auto}
+
+  /* moving sheen — light responding to card stock */
+  .face.front::after{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;
+    background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.9),transparent 55%);
+    opacity:calc(var(--glow,0)*.13);
+  }
+
+  /* ---------- front ---------- */
+  .mono-row{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    font:500 9.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  }
+  .front .mono-row{color:var(--paper-62)}
+  .back .mono-row{color:var(--ink-55)}
+  .f-brand{display:flex;align-items:center;gap:9px}
+  .f-brand svg{width:13px;height:13px;color:var(--accent);flex:none}
+
+  .f-bottom{margin-top:auto;max-width:78%}
+  .f-name{
+    font-family:var(--serif);font-optical-sizing:auto;font-weight:500;
+    font-size:clamp(30px,12.5cqw,66px);line-height:.95;letter-spacing:-.015em;
+  }
+  .f-name em{font-style:italic;font-weight:450}
+  .f-role{
+    display:flex;align-items:center;gap:11px;margin-top:14px;
+    font:500 clamp(8.5px,1.9cqw,10.5px) var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--paper-62);white-space:nowrap;
+  }
+  .f-role .rule{width:26px;height:2px;background:var(--accent);flex:none}
+
+  .f-flip{
+    position:absolute;right:clamp(18px,5cqw,27px);bottom:clamp(16px,4.4cqw,24px);
+    display:flex;align-items:center;gap:7px;
+    font:500 10px var(--mono);letter-spacing:.2em;color:var(--accent);
+  }
+  .f-flip svg{width:13px;height:13px;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+  .flip:hover .f-flip svg{transform:translateX(4px)}
+
+  /* sticker */
+  .sticker{
+    position:absolute;top:50%;right:-24px;width:clamp(60px,17cqw,94px);height:clamp(60px,17cqw,94px);
+    transform:translateY(-58%) rotate(-9deg);border-radius:50%;
+    background:var(--accent);display:grid;place-items:center;
+    box-shadow:3px 4px 0 rgba(23,19,15,.18);
+  }
+  .s-text{position:absolute;inset:0;animation:spin 16s linear infinite}
+  .s-text text{font-family:var(--mono);font-weight:500;font-size:11px;fill:var(--ink)}
+  .s-mark{width:27%;height:27%;color:var(--ink)}
+  .s-mark path{stroke:currentColor;stroke-width:2.4;stroke-linecap:round;fill:none}
+  @keyframes spin{to{transform:rotate(1turn)}}
+
+  /* ---------- back ---------- */
+  .b-head{
+    font-family:var(--serif);font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(19px,5.2cqw,30px);line-height:1.08;
+    margin:clamp(8px,2.4cqw,16px) 0 clamp(6px,1.8cqw,10px);
+  }
+  .b-mid{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:clamp(8px,2.4cqw,14px)}
+  .b-bio{font-size:clamp(10.5px,2.3cqw,13px);line-height:1.55;color:var(--ink-55);max-width:34ch}
+  .b-actions{display:flex;gap:9px;flex:none}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font:500 clamp(9.5px,2cqw,11px) var(--mono);letter-spacing:.12em;text-transform:uppercase;
+    padding:11px 15px;border-radius:999px;border:1px solid var(--ink);
+    background:var(--ink);color:var(--paper);cursor:pointer;
+    transition:background .2s,color .2s,border-color .2s,transform .18s ease-out;
+    white-space:nowrap;
+  }
+  .btn svg{width:13px;height:13px;flex:none}
+  .btn.alt{background:transparent;color:var(--ink)}
+  .btn:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+  .btn.alt:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .btn:active{transform:scale(.97)}
+
+  .b-links{list-style:none;margin-top:auto}
+  .row{
+    display:flex;align-items:center;gap:12px;width:100%;
+    padding:clamp(6px,1.7cqw,10px) 10px;
+    border-top:1px solid var(--line);border-radius:6px;
+    color:inherit;text-decoration:none;text-align:left;
+    background:transparent;border-radius:0;
+    transition:background .16s,color .16s,padding .16s;
+    cursor:pointer;font-family:var(--sans);
+  }
+  .b-links li:last-child .row{border-bottom:1px solid var(--line)}
+  .row .lab{
+    flex:0 0 auto;width:clamp(50px,15.5cqw,86px);
+    font:500 clamp(8.5px,1.8cqw,9.5px) var(--mono);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-55);transition:color .16s;white-space:nowrap;
+  }
+  .row .val{
+    flex:1;font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(12px,2.8cqw,15.5px);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .row .ic{width:15px;height:15px;flex:none;opacity:.65;transition:transform .18s cubic-bezier(.22,1,.36,1),color .16s,opacity .16s}
+  .row:hover,.row:focus-visible{background:var(--ink);color:var(--paper);padding-left:16px;outline:none}
+  .row:hover .lab,.row:focus-visible .lab{color:rgba(239,233,220,.55)}
+  .row:hover .ic,.row:focus-visible .ic{transform:translate(2px,-2px);color:var(--accent);opacity:1}
+
+  .b-foot{
+    margin-top:clamp(8px,2cqw,12px);padding-top:clamp(6px,1.6cqw,10px);
+    border-top:1px solid var(--line);
+    font:500 9px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-55);
+  }
+
+  /* staggered reveal on the back */
+  .rev{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1)}
+  .flip.flipped .rev{opacity:1;transform:none;transition-delay:var(--d,0s)}
+
+  /* ---------- hint ---------- */
+  .hint{
+    display:flex;align-items:center;gap:6px;
+    font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-55);
+    animation:fadeUp .7s ease 1.15s both;
+    transition:opacity .5s,transform .5s;
+  }
+  .hint.gone{opacity:0;transform:translateY(8px);pointer-events:none}
+  kbd{
+    font:500 10px var(--mono);color:var(--ink);
+    border:1px solid var(--ink-35);border-bottom-width:2px;border-radius:5px;
+    padding:2px 6px;background:rgba(23,19,15,.04);
+  }
+
+  /* ---------- ticker ---------- */
+  .ticker{
+    position:fixed;left:0;right:0;bottom:0;height:42px;z-index:30;
+    display:flex;align-items:center;overflow:hidden;
+    border-top:1px solid var(--line);background:var(--paper);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+    animation:fadeUp .7s ease .9s both;
+  }
+  .ticker-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .tset{display:flex;align-items:center;gap:26px;padding-right:26px}
+  .ti{font:500 10.5px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-55);white-space:nowrap}
+  .tsep{width:9px;height:9px;color:var(--accent);flex:none}
+  .tsep path{stroke:currentColor;stroke-width:2.6;stroke-linecap:round;fill:none}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* ---------- toast ---------- */
+  .toast{
+    position:fixed;left:50%;bottom:64px;z-index:150;
+    transform:translate(-50%,14px);opacity:0;pointer-events:none;
+    display:flex;align-items:center;gap:9px;
+    background:var(--ink);color:var(--paper);
+    font:500 11.5px var(--mono);letter-spacing:.05em;
+    padding:11px 18px;border-radius:999px;
+    box-shadow:0 12px 32px -10px rgba(23,19,15,.45);
+    transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .35s;
+  }
+  .toast.show{transform:translate(-50%,0);opacity:1}
+  .toast svg{width:14px;height:14px;color:var(--accent);flex:none}
+  .toast svg path{stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+
+  :is(a,button,.flip):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .row:focus-visible{outline-offset:-2px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .side-note,.note{display:none}
+    .crop.bl,.crop.br{display:none}
+    .ghost{font-size:clamp(90px,32vw,240px)}
+  }
+  @media (max-width:560px){
+    .bar{padding:16px 18px}
+    .brandmark .bm-tx{display:none}
+    .meta{gap:10px}
+    .meta .hide-s{display:none}
+    .stage{padding:64px 16px 84px;gap:16px}
+    .card{width:min(420px,92vw,56vh);aspect-ratio:.92}
+    .sticker{right:-18px}
+    .b-mid{flex-direction:column;align-items:stretch;gap:12px}
+    .b-actions{justify-content:space-between}
+    .b-actions .btn{flex:1;justify-content:center;padding:11px 8px}
+    .b-foot{display:none}
+    .toast{bottom:56px;max-width:88vw}
+  }
+  @media (max-height:480px){
+    .stage{padding:60px 16px 70px}
+    .hint{display:none}
+  }
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .curtain{display:none}
+    .rev{opacity:1;transform:none}
+    .back{visibility:visible}
+  }
+</style>
+</head>
+<body>
+
+  <div class="dotgrid"></div>
+  <div class="curtain b"></div>
+  <div class="curtain a"></div>
+
+  <!-- crop marks -->
+  <div class="crop tl"></div><div class="crop tr"></div>
+  <div class="crop bl"></div><div class="crop br"></div>
+
+  <!-- top bar -->
+  <header class="bar">
+    <div class="brandmark">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+      <span class="bm-tx">AVA REYES <em>— PORTFOLIO CARD</em></span>
+    </div>
+    <div class="meta">
+      <span><span class="mut hide-s">LOCAL&nbsp;</span><time id="clock">00:00:00</time></span>
+      <span class="div" aria-hidden="true"></span>
+      <span class="status"><span class="dot" aria-hidden="true"></span><span class="hide-s">BOOKING&nbsp;</span>Q3&nbsp;’25</span>
+    </div>
+  </header>
+
+  <!-- edge annotations -->
+  <div class="side-note l" aria-hidden="true">PORTFOLIO CARD — SINGLE EDITION — 2025</div>
+  <div class="side-note r" aria-hidden="true">PAPER / INK / VERMILLION — 3.5 × 2 IN</div>
+  <div class="note l" aria-hidden="true">©2025 AVA REYES<br/>45.5152° N / 122.6784° W — PORTLAND, OR</div>
+  <div class="note r" aria-hidden="true">Nº 001 — EDITION OF ONE<br/>PRESS F TO FLIP</div>
+
+  <!-- stage -->
+  <main class="stage" id="stage">
+    <h1 class="sr-only">Ava Reyes — Brand Designer &amp; Art Director</h1>
+    <div class="ghost" id="ghost" aria-hidden="true">Reyes</div>
+
+    <div class="scene">
+      <div class="shadow" id="shadow"></div>
+      <div class="enter">
+        <div class="float">
+          <div class="tilt" id="tilt">
+            <div class="stack s1" aria-hidden="true"></div>
+            <div class="stack s2" aria-hidden="true"></div>
+
+            <div class="card">
+              <div class="flip" id="flip" role="button" tabindex="0" aria-pressed="false"
+                   aria-label="Ava Reyes — business card. Activate to flip.">
+
+                <!-- FRONT -->
+                <div class="face front">
+                  <div class="mono-row">
+                    <span class="f-brand">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+                      INDEPENDENT PRACTICE
+                    </span>
+                    <span>Nº 001 — FRONT</span>
+                  </div>
+
+                  <div class="sticker" aria-hidden="true">
+                    <svg class="s-text" viewBox="0 0 100 100">
+                      <defs><path id="circ" d="M50 50 m-37 0 a37 37 0 1 1 74 0 a37 37 0 1 1 -74 0"/></defs>
+                      <text textLength="230" lengthAdjust="spacingAndGlyphs"><textPath href="#circ">OPEN FOR PROJECTS • SUMMER ’25 •</textPath></text>
+                    </svg>
+                    <svg class="s-mark" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+                  </div>
+
+                  <div class="f-bottom">
+                    <h2 class="f-name">Ava <em>Reyes</em></h2>
+                    <p class="f-role"><span class="rule"></span>BRAND DESIGNER &amp; ART DIRECTOR</p>
+                  </div>
+
+                  <div class="f-flip" aria-hidden="true">
+                    FLIP
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                  </div>
+                </div>
+
+                <!-- BACK -->
+                <div class="face back">
+                  <div class="mono-row">
+                    <span>Nº 002 — BACK</span>
+                    <span>CONTACT / 2025</span>
+                  </div>
+
+                  <h3 class="b-head rev" style="--d:.06s">Let’s make something worth&nbsp;signing.</h3>
+
+                  <div class="b-mid">
+                    <p class="b-bio rev" style="--d:.12s">Identity systems, art direction and type-led design for founders and labels that mean it.</p>
+                    <div class="b-actions rev" style="--d:.18s">
+                      <button class="btn" id="copyBtn" type="button">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5 15V6a2 2 0 0 1 2-2h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+                        COPY EMAIL
+                      </button>
+                      <button class="btn alt" id="saveBtn" type="button">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                        SAVE CONTACT
+                      </button>
+                    </div>
+                  </div>
+
+                  <ul class="b-links">
+                    <li class="rev" style="--d:.22s">
+                      <button class="row" id="emailRow" type="button" aria-label="Copy email address">
+                        <span class="lab">EMAIL</span>
+                        <span class="val">hello@avareyes.studio</span>
+                        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5 15V6a2 2 0 0 1 2-2h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+                      </button>
+                    </li>
+                    <li class="rev" style="--d:.28s">
+                      <a class="row" href="https://avareyes.studio" target="_blank" rel="noopener">
+                        <span class="lab">WEBSITE</span>
+                        <span class="val">avareyes.studio</span>
+                        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M17 7H9m8 0v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                      </a>
+                    </li>
+                    <li class="rev" style="--d:.34s">
+                      <a class="row" href="https://instagram.com/avareyes" target="_blank" rel="noopener">
+                        <span class="lab">INSTAGRAM</span>
+                        <span class="val">@ava.reyes</span>
+                        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M17 7H9m8 0v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                      </a>
+                    </li>
+                    <li class="rev" style="--d:.4s">
+                      <a class="row" href="https://www.linkedin.com/in/avareyes" target="_blank" rel="noopener">
+                        <span class="lab">LINKEDIN</span>
+                        <span class="val">in/avareyes</span>
+                        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M17 7H9m8 0v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <div class="b-foot rev" style="--d:.46s">AVAREYES.STUDIO — MADE IN PORTLAND, OREGON</div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="hint" id="hint"><kbd>F</kbd> flip — <kbd>C</kbd> copy email</p>
+  </main>
+
+  <!-- ticker -->
+  <footer class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack">
+      <div class="tset">
+        <span class="ti">BRAND IDENTITY</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span class="ti">ART DIRECTION</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span class="ti">TYPE SYSTEMS</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span class="ti">PACKAGING</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span class="ti">NAMING</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span class="ti">EDITORIAL</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span class="ti">MOTION</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span class="ti">VISUAL SYSTEMS</span><svg class="tsep" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      </div>
+    </div>
+  </footer>
+
+  <!-- toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+    <span id="toastMsg"></span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s){ return document.querySelector(s); };
+  var EMAIL = 'hello@avareyes.studio';
+
+  var card   = $('#flip'),
+      tilt   = $('#tilt'),
+      shadow = $('#shadow'),
+      ghost  = $('#ghost'),
+      hint   = $('#hint'),
+      toastEl= $('#toast'),
+      toastMsg=$('#toastMsg'),
+      clockEl= $('#clock'),
+      track  = $('#tickerTrack');
+
+  var fine    = matchMedia('(pointer:fine)').matches,
+      reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- live clock ---------- */
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var d = new Date();
+    clockEl.textContent = pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  }
+  tick(); setInterval(tick,1000);
+
+  /* ---------- seamless ticker ---------- */
+  track.innerHTML += track.innerHTML;
+
+  /* ---------- toast ---------- */
+  var toastT;
+  function toast(msg){
+    toastMsg.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ toastEl.classList.remove('show'); },2600);
+  }
+
+  /* ---------- flip ---------- */
+  var flipped = false, hintGone = false;
+  function setFlip(v){
+    flipped = v;
+    card.classList.toggle('flipped',v);
+    card.setAttribute('aria-pressed',String(v));
+    if(v && !hintGone){ hintGone = true; hint.classList.add('gone'); }
+  }
+  card.addEventListener('click',function(){ setFlip(!flipped); });
+  card.addEventListener('keydown',function(e){
+    if(e.target !== card) return;
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); setFlip(!flipped); }
+  });
+  document.addEventListener('keydown',function(e){
+    var t = e.target;
+    if(t && t.tagName && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+    var k = e.key.toLowerCase();
+    if(k === 'f'){ setFlip(!flipped); }
+    if(k === 'c'){ e.preventDefault(); copyEmail(); }
+  });
+
+  /* inner links shouldn't trigger the flip */
+  var inner = card.querySelectorAll('a,button');
+  for(var i=0;i<inner.length;i++){
+    inner[i].addEventListener('click',function(e){ e.stopPropagation(); });
+  }
+
+  /* ---------- copy email ---------- */
+  function copyEmail(){
+    function ok(){ toast('Email copied — '+EMAIL); }
+    function fail(){ toast('Copy failed — '+EMAIL); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(EMAIL).then(ok,function(){ legacy(); });
+    } else { legacy(); }
+    function legacy(){
+      try{
+        var t = document.createElement('textarea');
+        t.value = EMAIL;
+        t.style.position='fixed'; t.style.opacity='0';
+        document.body.appendChild(t); t.select();
+        document.execCommand('copy') ? ok() : fail();
+        t.remove();
+      }catch(err){ fail(); }
+    }
+  }
+  $('#copyBtn').addEventListener('click',copyEmail);
+  $('#emailRow').addEventListener('click',copyEmail);
+
+  /* ---------- save contact (.vcf) ---------- */
+  $('#saveBtn').addEventListener('click',function(){
+    var v = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'N:Reyes;Ava;;;',
+      'FN:Ava Reyes',
+      'TITLE:Brand Designer and Art Director',
+      'ORG:Ava Reyes Studio',
+      'EMAIL;TYPE=WORK:hello@avareyes.studio',
+      'URL:https://avareyes.studio',
+      'END:VCARD'
+    ].join('\n');
+    var blob = new Blob([v],{type:'text/vcard'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'ava-reyes.vcf';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); },2000);
+    toast('Contact card downloaded (.vcf)');
+  });
+
+  /* ---------- tilt, sheen, parallax ---------- */
+  if(fine && !reduced){
+    var rx=0, ry=0, trx=0, try_=0,
+        gx=50, gy=50, tgx=50, tgy=50,
+        glow=0, tglow=0;
+
+    window.addEventListener('mousemove',function(e){
+      var r = card.getBoundingClientRect();
+      var cx = r.left + r.width/2, cy = r.top + r.height/2;
+      var nx = Math.max(-1,Math.min(1,(e.clientX-cx)/(r.width*0.9)));
+      var ny = Math.max(-1,Math.min(1,(e.clientY-cy)/(r.height*0.9)));
+      try_ = nx*10; trx = -ny*8;
+      tgx = 50 + nx*40; tgy = 50 + ny*40;
+      tglow = (e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom) ? 1 : 0;
+    });
+    document.addEventListener('mouseleave',function(){ trx=0; try_=0; tglow=0; });
+
+    (function loop(){
+      rx += (trx-rx)*0.075;
+      ry += (try_-ry)*0.075;
+      gx += (tgx-gx)*0.09;
+      gy += (tgy-gy)*0.09;
+      glow += (tglow-glow)*0.08;
+
+      tilt.style.transform = 'rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
+      card.style.setProperty('--gx', gx.toFixed(1)+'%');
+      card.style.setProperty('--gy', gy.toFixed(1)+'%');
+      card.style.setProperty('--glow', glow.toFixed(3));
+      shadow.style.transform = 'translateX(calc(-50% + '+(ry*-2.4).toFixed(1)+'px)) scaleX('+(1-Math.abs(ry)*0.006).toFixed(3)+')';
+      ghost.style.setProperty('--px',(ry*-1.6).toFixed(1)+'px');
+      ghost.style.setProperty('--py',(rx*1.2).toFixed(1)+'px');
+
+      requestAnimationFrame(loop);
+    })();
+
+    /* magnetic buttons */
+    var btns = document.querySelectorAll('.btn');
+    for(var j=0;j<btns.length;j++){
+      (function(b){
+        b.addEventListener('mousemove',function(e){
+          var r = b.getBoundingClientRect();
+          var dx = e.clientX-(r.left+r.width/2), dy = e.clientY-(r.top+r.height/2);
+          b.style.transform = 'translate('+(dx*0.18).toFixed(1)+'px,'+(dy*0.28).toFixed(1)+'px)';
+        });
+        b.addEventListener('mouseleave',function(){ b.style.transform=''; });
+      })(btns[j]);
+    }
+  }
+})();
+</script>
+</body>
+</html>
