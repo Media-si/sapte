@@ -165,6 +165,34 @@ body {
     padding-left: 16px;
 }
 
+/* Link de comutare între cursuri */
+.back-link {
+    display: block;
+    margin-bottom: 16px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    background: var(--dark-3);
+    border: 1px solid #333;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.back-link:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    padding-left: 12px;
+}
+
+/* Link-uri în footer */
+.footer-curs a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+.footer-curs a:hover { text-decoration: underline; }
+
 /* Conținut principal */
 .continut {
     padding: 50px 60px;

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curs AI & Creare Video cu AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Protecție acces — sistem separat pentru cursul AI
+        (function() {
+            const CHEIE_SECRETA = "AICURS2025";
+            function hash(str) {
+                let h = 0;
+                for (let i = 0; i < str.length; i++) {
+                    h = ((h << 5) - h) + str.charCodeAt(i);
+                    h |= 0;
+                }
+                return h.toString();
+            }
+            if (sessionStorage.getItem("acces_ai") !== hash(CHEIE_SECRETA)) {
+                window.location.href = "ai-landing.html";
+            }
+        })();
+
+        // Blochează click-dreapta / copierea / selecția (protecție anti-furt de conținut)
+        document.addEventListener("contextmenu", (e) => e.preventDefault());
+        document.addEventListener("copy", (e) => {
+            const sel = window.getSelection().toString();
+            if (sel.length > 90) e.preventDefault();
+        });
+        document.addEventListener("keydown", (e) => {
+            const k = e.key.toLowerCase();
+            if ((e.ctrlKey || e.metaKey) && ["c", "u", "s", "p"].includes(k)) {
+                // permite copierea selecțiilor mici (ex: o formulă), blochează selectarea mare
+                if (k === "c" && window.getSelection().toString().length <= 90) return;
+                e.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body class="curs-body">
+
+<!-- ============ SIDEBAR CU NAVIGARE ============ -->
+<nav class="sidebar" aria-label="Navigare curs AI">
+    <a class="back-link" href="curs.html">← Curs TikTok FYP</a>
+    <a class="back-link" href="https://999.md/ro/profile/AllSubsMD" target="_blank" rel="noopener">👤 Profil 999 · AllSubsMD ↗</a>
+    <div class="sidebar-header">
+        <h2>🤖 Cuprins AI</h2>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu">
+            <span class="menu-toggle-text">Deschide cuprins</span>
+            <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+        </button>
+    </div>
+    <ul id="course-menu">
+        <li><a href="#ai1">1. Ce este AI-ul generativ</a></li>
+        <li><a href="#ai2">2. Cum „gândește" AI-ul</a></li>
+        <li><a href="#ai3">3. AI pentru text & idei</a></li>
+        <li><a href="#ai4">4. Arta promptului</a></li>
+        <li><a href="#ai5">5. AI pentru imagini</a></li>
+        <li><a href="#ai6">6. AI pentru video</a></li>
+        <li><a href="#ai7">7. AI pentru voce & muzică</a></li>
+        <li><a href="#ai8">8. Avataruri & prezentatori AI</a></li>
+        <li><a href="#ai9">9. Workflow: video cu AI</a></li>
+        <li><a href="#ai10">10. Editare & subtitrare auto</a></li>
+        <li><a href="#ai11">11. Prompturi pentru video</a></li>
+        <li><a href="#ai12">12. AI + algoritmul TikTok</a></li>
+        <li><a href="#ai13">13. Etică & reguli TikTok</a></li>
+        <li><a href="#ai14">14. Monetizare & nișe</a></li>
+        <li><a href="#ai15">15. Plan 30 zile cu AI</a></li>
+    </ul>
+</nav>
+
+<main class="continut">
+
+<h1>🤖 Ghidul Definitiv: AI & Crearea de Video cu AI</h1>
+<p class="intro">Un curs separat, pas cu pas, despre cum să folosești inteligența artificială ca să produci conținut video la calitate profesională — rapid, ieftin și scalabil în 2025.</p>
+
+<!-- ==================== CAPITOLUL 1 ==================== -->
+<section id="ai1" class="capitol">
+    <h2>1. Ce este AI-ul generativ și de ce contează acum</h2>
+    <p><strong>AI-ul generativ</strong> este o categorie de programe care pot crea conținut nou — text, imagini, video, voce și muzică — pe baza unei instrucțiuni scrise (un „prompt").</p>
+
+    <h3>De ce este momentul potrivit</h3>
+    <ul>
+        <li>🎬 Bariera de intrare a scăzut dramatic — nu mai ai nevoie de studio, cameră sau echipă</li>
+        <li>⚡ Poți produce un videoclip în minute, nu în zile</li>
+        <li>💰 Costurile scad — multe unelte au versiuni gratuite sau abonamente mici</li>
+        <li>🌍 Poți crea „faceless" content pentru orice nișă, în orice limbă</li>
+    </ul>
+
+    <h3>Regula de aur</h3>
+    <p>AI-ul <strong>nu înlocuiește ideea</strong> — o amplifică. Cine nu are o strategie clară va produce doar mult conținut slab, mai repede. De aceea acest curs se leagă direct de <em>Cursul TikTok FYP</em>.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 2 ==================== -->
+<section id="ai2" class="capitol">
+    <h2>2. Cum „gândește" AI-ul (pe scurt, fără jargon)</h2>
+
+    <h3>Ce face de fapt</h3>
+    <p>Modelele au fost antrenate pe cantități uriașe de date. Ele nu „înțeleg" ca un om — <strong>prezic</strong> ce urmează cel mai probabil (următorul cuvânt, pixelul potrivit, cadrul următor).</p>
+
+    <h3>Ce trebuie să știi mereu</h3>
+    <ul>
+        <li><strong>Poate halucina</strong> — inventează fapte, nume, citate. Verifică orice informație importantă.</li>
+        <li><strong>Depinde total de prompt</strong> — „garbage in, garbage out"</li>
+        <li><strong>Nu are opinii sau gust</strong> — tu ești regizorul</li>
+        <li><strong>Rezultatul e un draft</strong> — mereu editează înainte de publicare</li>
+    </ul>
+</section>
+
+<!-- ==================== CAPITOLUL 3 ==================== -->
+<section id="ai3" class="capitol">
+    <h2>3. AI pentru text și idei</h2>
+    <p>Cel mai simplu punct de start. Un asistent AI de text (ex: ChatGPT, Claude, Gemini, Copilot) îți poate accelera enorm procesul de creație.</p>
+
+    <h3>La ce îl folosești</h3>
+    <ul>
+        <li>✍️ <strong>Idei de conținut</strong> — 30 de idei de video pentru nișa ta</li>
+        <li>🎣 <strong>Hook-uri</strong> — 10 variante de primele 3 secunde</li>
+        <li>🎬 <strong>Scripturi</strong> — structură hook → mijloc → final + CTA</li>
+        <li>📝 <strong>Descrieri & titluri</strong> — cu cuvinte-cheie pentru căutare</li>
+        <li>💬 <strong>Răspunsuri la comentarii</strong> — idei de replici</li>
+    </ul>
+
+    <h3>Metoda corectă</h3>
+    <p>Nu accepta primul rezultat. Cere <strong>minim 10 variante</strong>, apoi alege 2-3 și combină-le. AI-ul e un partener de brainstorming, nu un autor.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 4 ==================== -->
+<section id="ai4" class="capitol">
+    <h2>4. Arta promptului (prompt engineering)</h2>
+    <p>Un prompt bun are structură. Cu cât oferi mai mult context, cu atât rezultatul e mai bun.</p>
+
+    <h3>Structura unui prompt eficient</h3>
+    <pre><code>ROL:      Ce expert să fie (ex: „Ești un copywriter de TikTok")
+SARCINĂ:  Ce vrei exact (ex: „Scrie 5 hook-uri")
+CONTEXT:  Nișa, publicul, tonul, limba
+FORMAT:   Cum vrei răspunsul (listă, tabel, sub 10 cuvinte)
+EXEMPLU:  Dă 1-2 exemple de ce vrei (few-shot)</code></pre>
+
+    <h3>Exemplu concret</h3>
+    <pre><code>Ești un creator viral pe TikTok în nișa fitness.
+Scrie 8 hook-uri de maxim 8 cuvinte pentru un video
+despre greșeli la sală. Ton direct, energic, în română.
+Format: listă numerotată. Fără emoji.</code></pre>
+
+    <h3>Reguli</h3>
+    <ul>
+        <li>Iterează — dacă nu e bun, spune exact ce schimbi</li>
+        <li>Dă exemple de rezultat dorit (few-shot)</li>
+        <li>Cere un ton și un format clare</li>
+        <li>Salvează prompturile care funcționează — refolosește-le</li>
+    </ul>
+</section>
+
+<!-- ==================== CAPITOLUL 5 ==================== -->
+<section id="ai5" class="capitol">
+    <h2>5. AI pentru imagini</h2>
+    <p>Generatoarele de imagini (ex: Midjourney, DALL·E, Leonardo, Ideogram, Flux) creează vizualuri de la zero sau pe baza unei imagini de referință.</p>
+
+    <h3>La ce le folosești</h3>
+    <ul>
+        <li>🖼️ <strong>Thumbnail-uri</strong> atractive</li>
+        <li>🎞️ <strong>B-roll</strong> și fundaluri pentru video</li>
+        <li>🧑‍🎨 <strong>Personaje</strong> recurente pentru seriale de conținut</li>
+        <li>🌆 Decoruri, concept art, produse</li>
+    </ul>
+
+    <h3>Structura unui prompt de imagine</h3>
+    <pre><code>SUBIECT:   cine / ce
+ACȚIUNE:   ce face
+STIL:      foto realistă / anime / cinematic / 3D
+LUMINĂ:    neon, apus, studio
+UNGHI:     close-up, wide, de sus
+PALETĂ:    culori dominante
+RAPORT:    9:16 (vertical pentru TikTok)</code></pre>
+
+    <h3>Consistența personajului</h3>
+    <p>Ca să ai același personaj în mai multe imagini, folosește <strong>referințe</strong> (image reference / character reference) și păstrează aceeași descriere. Fără asta, personajul se schimbă la fiecare generare.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 6 ==================== -->
+<section id="ai6" class="capitol">
+    <h2>6. AI pentru video</h2>
+    <p>Aici lucrurile devin spectaculoase. Unelte ca Runway, Pika, Kling, Luma Dream Machine, Hailuo/MiniMax sau Sora transformă text sau o imagine într-un clip video.</p>
+
+    <h3>Două moduri de lucru</h3>
+    <ul>
+        <li><strong>Text-to-video</strong> — descrii scena, AI-ul o animă</li>
+        <li><strong>Image-to-video</strong> — iei o imagine (inclusiv generată de AI) și o pui în mișcare</li>
+    </ul>
+
+    <h3>Adevărul despre rezultate</h3>
+    <ul>
+        <li>Clipurile sunt scurte — de regulă <strong>5-10 secunde</strong>. Un video final = mai multe clipuri lipite.</li>
+        <li>Mișcările complexe, mâinile și textul pe ecran încă pot ieși greșit — verifică fiecare cadru</li>
+        <li>Cu cât promptul e mai specific (mișcare de cameră, ritm), cu atât rezultatul e mai controlabil</li>
+    </ul>
+
+    <h3>Tehnici utile</h3>
+    <ul>
+        <li>Pornește din <strong>image-to-video</strong> — ai mai mult control decât din text</li>
+        <li>Descrie <strong>mișcarea camerei</strong>: „slow zoom in", „pan left", „drone shot"</li>
+        <li>Generează mai multe variante și alege cea mai bună</li>
+    </ul>
+</section>
+
+<!-- ==================== CAPITOLUL 7 ==================== -->
+<section id="ai7" class="capitol">
+    <h2>7. AI pentru voce și muzică</h2>
+
+    <h3>Voce (voiceover)</h3>
+    <ul>
+        <li>Unelte precum <strong>ElevenLabs</strong> generează voci naturale în multe limbi</li>
+        <li>Poți face voiceover profesionist fără microfon scump</li>
+        <li>⚠️ <strong>Nu clona vocea altcuiva</strong> fără consimțământ explicit — e ilegal și imoral</li>
+    </ul>
+
+    <h3>Muzică</h3>
+    <ul>
+        <li>Unelte precum <strong>Suno</strong> sau <strong>Udio</strong> creează piese originale pe baza unei descrieri</li>
+        <li>Avantaj: muzică fără probleme de drepturi de autor (verifică termenii fiecărei platforme)</li>
+        <li>Pentru TikTok, verifică mereu regulile platformei și ale TikTok Commercial Music Library</li>
+    </ul>
+
+    <h3>Sincronizare</h3>
+    <p>Taie pe beat. Vocea să fie cu 20-30% mai tare decât muzica. Același principiu ca în Cursul FYP.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 8 ==================== -->
+<section id="ai8" class="capitol">
+    <h2>8. Avataruri și prezentatori AI</h2>
+    <p>Unelte precum HeyGen, Synthesia sau D-ID creează un „prezentator" digital care vorbește textul tău — fără să filmezi.</p>
+
+    <h3>Când sunt utile</h3>
+    <ul>
+        <li>📚 Conținut educațional / explicativ</li>
+        <li>🌐 Video în mai multe limbi deodată</li>
+        <li>📈 Scalare — produci multe video-uri fără să apari tu mereu</li>
+    </ul>
+
+    <h3>Atenție</h3>
+    <ul>
+        <li>Autenticitatea contează — publicul obosește repede de prezentatori AI generici</li>
+        <li>⚠️ Nu folosi fața sau vocea unei persoane reale fără acordul ei</li>
+        <li>Etichetează conținutul AI (vezi Capitolul 13)</li>
+    </ul>
+</section>
+
+<!-- ==================== CAPITOLUL 9 ==================== -->
+<section id="ai9" class="capitol">
+    <h2>9. Workflow complet: un video creat cu AI, pas cu pas</h2>
+    <p>Așa arată un flux de lucru real, de la idee la postare:</p>
+    <ol>
+        <li><strong>Idee & nișă</strong> — stabilești subiectul</li>
+        <li><strong>Script</strong> — text AI (ChatGPT/Claude), tu îl editezi</li>
+        <li><strong>Storyboard</strong> — împărți scriptul în cadre de 5-10 sec</li>
+        <li><strong>Imagini</strong> — Midjourney/DALL·E pentru cadre cheie</li>
+        <li><strong>Animație</strong> — Runway/Kling/Pika (image-to-video)</li>
+        <li><strong>Voce</strong> — ElevenLabs pentru voiceover</li>
+        <li><strong>Muzică</strong> — Suno/Udio sau sunet trending</li>
+        <li><strong>Montaj</strong> — CapCut (taie pe beat, tranziții)</li>
+        <li><strong>Subtitrări</strong> — auto-captions (obligatoriu pentru retention)</li>
+        <li><strong>Postare</strong> — la oră strategică (vezi Cursul FYP)</li>
+    </ol>
+
+    <p>Sfat: fă-ți un <strong>template</strong> pentru fiecare pas. A doua oară durează de 3-4 ori mai puțin.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 10 ==================== -->
+<section id="ai10" class="capitol">
+    <h2>10. Editare și subtitrare automată</h2>
+
+    <h3>CapCut (și alternative)</h3>
+    <ul>
+        <li><strong>Auto captions</strong> — subtitrări generate automat (le corectezi apoi)</li>
+        <li><strong>Auto-cuts</strong> — taie liniștea și momentele moarte</li>
+        <li>Efecte, tranziții, text animat</li>
+    </ul>
+
+    <h3>Opus Clip și similare</h3>
+    <ul>
+        <li>Transformă un video lung (podcast, interviu) în <strong>clipuri scurte</strong></li>
+        <li>Detectează automat momentele cu potențial viral</li>
+    </ul>
+
+    <h3>Regula subtitrării</h3>
+    <p>Peste 80% dintre oameni vizionează inițial <strong>fără sunet</strong>. Subtitrările mari, clare, bine sincronizate cresc retention masiv.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 11 ==================== -->
+<section id="ai11" class="capitol">
+    <h2>11. Prompturi pentru video (structură gata de folosit)</h2>
+
+    <h3>Text-to-video</h3>
+    <pre><code>Subiect: o cană de cafea pe o masă de lemn
+Acțiune: aburul se ridică lent
+Cameră: slow zoom in, cinematic
+Lumină: raze de soare prin fereastră
+Stil: fotorealist, 4k
+Durată: 5 secunde, 9:16</code></pre>
+
+    <h3>Image-to-video</h3>
+    <pre><code>Pleacă de la imaginea generată.
+Mișcare: camera se rotește ușor în jur (orbit)
+Subiect: părul se mișcă în vânt
+Ritm: lent, fluid
+Durată: 6 secunde</code></pre>
+
+    <h3>Cuvinte care ajută</h3>
+    <ul>
+        <li>Tip de cameră: <em>close-up, wide, drone, orbit, dolly</em></li>
+        <li>Mișcare: <em>slow zoom, pan, tilt, tracking</em></li>
+        <li>Stil: <em>cinematic, realistic, anime, 3D render</em></li>
+    </ul>
+</section>
+
+<!-- ==================== CAPITOLUL 12 ==================== -->
+<section id="ai12" class="capitol">
+    <h2>12. Cum legi AI-ul de algoritmul TikTok</h2>
+    <p>AI-ul te ajută să <strong>produci</strong> — dar succesul pe FYP depinde de <strong>strategie</strong>. Principiile din Cursul TikTok FYP se aplică 100%:</p>
+    <ul>
+        <li>Hook în primele 1-2 secunde</li>
+        <li>Retention și loop (replays)</li>
+        <li>Text pe ecran, sunet bun, subtitrări</li>
+        <li>Consistență într-o singură nișă</li>
+        <li>Răspuns la comentarii în primele 30 de minute</li>
+    </ul>
+    <p class="final-note">🔗 <strong>Recomandare:</strong> parcurge întâi <a href="curs.html">Cursul TikTok FYP</a> pentru strategie, apoi folosește AI-ul ca unealtă de producție.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 13 ==================== -->
+<section id="ai13" class="capitol">
+    <h2>13. Etică, drepturi de autor și regulile TikTok pentru conținut AI</h2>
+    <p>Acest capitol te ține departe de ban-uri și probleme legale. Citește-l cu atenție.</p>
+
+    <h3>Reguli esențiale</h3>
+    <ul>
+        <li>🏷️ <strong>Etichetează conținutul AI realist</strong> — TikTok cere marcarea conținutului generat de AI care poate părea real (opțiunea „AI-generated content" la postare)</li>
+        <li>🚫 <strong>Nu clona vocea/fața</strong> unei persoane reale fără consimțământ (deepfake = interzis)</li>
+        <li>©️ <strong>Respectă drepturile de autor</strong> pe imagini, muzică și personaje protejate</li>
+        <li>❗ <strong>Fără dezinformare</strong> — nu folosi AI ca să induci în eroare despre persoane, evenimente sau fapte</li>
+        <li>🔍 <strong>Verifică faptele</strong> generate de AI înainte de publicare</li>
+    </ul>
+
+    <h3>Consecințe</h3>
+    <p>Nerespectarea regulilor poate duce la eliminarea videoclipului, limitarea contului sau suspendare. Regulile platformelor se actualizează — verifică periodic pagina de politici a TikTok.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 14 ==================== -->
+<section id="ai14" class="capitol">
+    <h2>14. Monetizare și nișe care merg bine cu AI</h2>
+
+    <h3>Nișe potrivite pentru conținut AI</h3>
+    <ul>
+        <li>📖 Storytelling & „faceless" channels</li>
+        <li>📚 Educație / „did you know"</li>
+        <li>🎧 Relaxare, ASMR, sunete</li>
+        <li>💡 Motivație & citate vizuale</li>
+        <li>📈 Business / finanțe (cu grijă la acuratețe)</li>
+        <li>🌍 Conținut în mai multe limbi</li>
+    </ul>
+
+    <h3>Cum faci bani</h3>
+    <ul>
+        <li>Monetizare din vizualizări (programele platformelor)</li>
+        <li>Vânzare de <strong>servicii</strong>: editoare, thumbnail-uri, UGC pentru branduri</li>
+        <li>Produse digitale (templates, preset-uri, mini-cursuri)</li>
+        <li>Afiliere și sponsorizări</li>
+    </ul>
+
+    <h3>Regula</h3>
+    <p>Nu te împrăștia. O nișă + un format care funcționează + consistență &gt; zece experimente. AI-ul îți dă viteza, tu dai direcția.</p>
+</section>
+
+<!-- ==================== CAPITOLUL 15 ==================== -->
+<section id="ai15" class="capitol">
+    <h2>15. Plan de 30 de zile — AI de la 0 la producție</h2>
+
+    <h3>Săptămâna 1: Învață uneltele</h3>
+    <ul>
+        <li>Ziua 1-2: Un asistent de text + un generator de imagini</li>
+        <li>Ziua 3-4: Un generator de video (text/image-to-video) + voce AI</li>
+        <li>Ziua 5-7: Fă primul clip complet de 10 secunde</li>
+    </ul>
+
+    <h3>Săptămâna 2: Producție zilnică</h3>
+    <ul>
+        <li>Ziua 8-14: 1 video/zi folosind template-ul tău</li>
+        <li>Notează timpul consumat la fiecare pas</li>
+    </ul>
+
+    <h3>Săptămâna 3: Optimizare</h3>
+    <ul>
+        <li>Ziua 15-21: Analizează retention — ce a mers, de ce</li>
+        <li>Dublează formatul câștigător</li>
+        <li>Automatizează pașii care iau cel mai mult timp</li>
+    </ul>
+
+    <h3>Săptămâna 4: Scalare</h3>
+    <ul>
+        <li>Ziua 22-30: Produce pe „bandă" (batch) — mai multe video-uri într-o sesiune</li>
+        <li>Ajustează template-ul și reia</li>
+    </ul>
+
+    <h3>Rezultat așteptat după 30 zile</h3>
+    <ul>
+        <li>Un workflow AI complet, repetabil</li>
+        <li>20-30 video-uri produse</li>
+        <li>Claritate pe formatul care funcționează pentru nișa ta</li>
+    </ul>
+
+    <p class="final-note">🚀 <strong>Regula supremă:</strong> AI-ul îți dă viteză, dar direcția și gustul rămân ale tale. Combină acest curs cu <a href="curs.html">Cursul TikTok FYP</a> și consistența își va face treaba.</p>
+</section>
+
+<footer class="footer-curs">
+    <p>© <script>document.write(new Date().getFullYear())</script> - Curs AI & Creare Video cu AI | Acces exclusiv pe bază de cheie</p>
+    <p>Site deținut de <a href="https://999.md/ro/profile/AllSubsMD" target="_blank" rel="noopener">AllSubsMD</a>. Conținutul este educațional.</p>
+</footer>
+
+</main>
+
+<script>
+    // Navigare cu scroll fluid și meniu compact pe telefon
+    const sidebar = document.querySelector('.sidebar');
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    menuToggle.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('menu-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.querySelector('.menu-toggle-text').textContent =
+            isOpen ? 'Închide cuprinsul' : 'Deschide cuprins';
+        menuToggle.querySelector('.menu-toggle-icon').textContent = isOpen ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.sidebar a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || href.charAt(0) !== '#') return; // lasă link-urile externe să funcționeze
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            if (window.matchMedia('(max-width: 700px)').matches) {
+                sidebar.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.querySelector('.menu-toggle-text').textContent = 'Deschide cuprins';
+                menuToggle.querySelector('.menu-toggle-icon').textContent = '☰';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

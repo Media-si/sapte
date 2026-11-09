@@ -21,12 +21,28 @@
                 window.location.href = "index.html";
             }
         })();
+
+        // Protecție anti-furt de conținut (click-dreapta / copiere / selectare mare)
+        document.addEventListener("contextmenu", (e) => e.preventDefault());
+        document.addEventListener("copy", (e) => {
+            const sel = window.getSelection().toString();
+            if (sel.length > 90) e.preventDefault();
+        });
+        document.addEventListener("keydown", (e) => {
+            const k = e.key.toLowerCase();
+            if ((e.ctrlKey || e.metaKey) && ["c", "u", "s", "p"].includes(k)) {
+                if (k === "c" && window.getSelection().toString().length <= 90) return;
+                e.preventDefault();
+            }
+        });
     </script>
 </head>
 <body class="curs-body">
 
 <!-- ============ SIDEBAR CU NAVIGARE ============ -->
 <nav class="sidebar" aria-label="Navigare curs">
+    <a class="back-link" href="ai.html">🤖 Curs AI →</a>
+    <a class="back-link" href="https://999.md/ro/profile/AllSubsMD" target="_blank" rel="noopener">👤 Profil 999 · AllSubsMD ↗</a>
     <div class="sidebar-header">
         <h2>📖 Cuprins</h2>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu">
@@ -534,7 +550,7 @@ Final: întrebare pentru comentarii</code></pre>
 </section>
 
 <footer class="footer-curs">
-    <p>© 2025 - Curs TikTok FYP | Acces exclusiv pe bază de cheie</p>
+    <p>© <script>document.write(new Date().getFullYear())</script> - Curs TikTok FYP | Acces exclusiv pe bază de cheie</p>
     <p>Distribuie cu responsabilitate. Conținutul este educațional.</p>
 </footer>
 
@@ -555,8 +571,10 @@ Final: întrebare pentru comentarii</code></pre>
 
     document.querySelectorAll('.sidebar a').forEach(link => {
         link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || href.charAt(0) !== '#') return; // lasă link-urile externe să funcționeze
             e.preventDefault();
-            const target = document.querySelector(link.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
             if (window.matchMedia('(max-width: 700px)').matches) {

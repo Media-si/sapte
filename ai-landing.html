@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curs AI Video - Creează video cu inteligență artificială</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============ LANDING PAGE AI ============ */
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+        .lp-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 6vw;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #222;
+        }
+
+        .lp-logo { font-weight: 800; font-size: 17px; white-space: nowrap; }
+        .lp-logo span { color: var(--secondary); }
+
+        .lp-links { display: flex; gap: 26px; list-style: none; }
+        .lp-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .lp-links a:hover { color: var(--secondary); }
+
+        .lp-nav .btn-nav {
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(90deg, var(--primary), #ff4060);
+            white-space: nowrap;
+        }
+
+        .lp-nav-right { display: flex; gap: 10px; align-items: center; }
+        .lp-nav .btn-nav-ai {
+            background: linear-gradient(90deg, var(--secondary), #00c9c2);
+            color: #04201f;
+        }
+        .lp-nav .btn-nav-ghost {
+            background: transparent;
+            border: 1px solid #3b3b3b;
+            color: var(--text);
+        }
+        .lp-nav .btn-nav-ghost:hover { border-color: var(--secondary); color: var(--secondary); }
+
+        /* Hero */
+        .lp-hero {
+            padding: 90px 6vw 70px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% -10%, rgba(0,242,234,0.18), transparent 60%),
+                        radial-gradient(ellipse at 50% 120%, rgba(255,0,80,0.12), transparent 55%);
+        }
+        .lp-eyebrow {
+            color: var(--secondary);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .lp-hero h1 {
+            font-size: clamp(34px, 6.5vw, 72px);
+            line-height: 1.05;
+            font-weight: 800;
+            margin: 0 auto 22px;
+            max-width: 1000px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .lp-hero p {
+            color: var(--text-dim);
+            font-size: clamp(16px, 2vw, 21px);
+            max-width: 760px;
+            margin: 0 auto 34px;
+        }
+        .lp-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+        .btn {
+            display: inline-block;
+            padding: 15px 34px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .btn-primary { color: #04201f; background: linear-gradient(90deg, var(--secondary), #00c9c2); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,242,234,0.35); }
+        .btn-ghost { color: var(--text); border: 1px solid #3b3b3b; background: var(--dark-2); }
+        .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+
+        .lp-hero-img {
+            max-width: 980px;
+            margin: 0 auto;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 40px 100px rgba(0,242,234,0.18);
+        }
+        .lp-hero-img img { display: block; width: 100%; }
+
+        /* Stats */
+        .lp-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            padding: 50px 6vw;
+            border-top: 1px solid #1e1e1e;
+            border-bottom: 1px solid #1e1e1e;
+            background: var(--dark-2);
+        }
+        .lp-stat { text-align: center; }
+        .lp-stat .num {
+            font-size: clamp(32px, 4.5vw, 54px);
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .lp-stat .lbl { color: var(--text-dim); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* Sections */
+        .lp-section { padding: 90px 6vw; max-width: 1200px; margin: 0 auto; }
+        .lp-section-title { font-size: clamp(26px, 3.8vw, 44px); font-weight: 800; margin-bottom: 16px; }
+        .lp-section-title .accent { color: var(--secondary); }
+        .lp-section-sub { color: var(--text-dim); font-size: clamp(15px, 1.7vw, 19px); max-width: 720px; margin-bottom: 40px; }
+
+        .lp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .lp-two.reverse .lp-img { order: -1; }
+
+        .lp-img {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+        .lp-img img { display: block; width: 100%; }
+
+        .lp-list { list-style: none; margin-top: 8px; }
+        .lp-list li {
+            padding: 11px 0 11px 34px;
+            position: relative;
+            color: #d0d0d0;
+            font-size: clamp(15px, 1.5vw, 18px);
+            border-bottom: 1px solid #1e1e1e;
+        }
+        .lp-list li::before { content: '▸'; position: absolute; left: 6px; color: var(--secondary); font-weight: 800; }
+
+        /* Chapter grid */
+        .lp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+        .lp-cell {
+            background: var(--dark-2);
+            border-left: 3px solid var(--secondary);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #d0d0d0;
+        }
+        .lp-cell b { color: var(--primary); }
+
+        /* Chips */
+        .lp-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+        .lp-chip {
+            background: var(--dark-3);
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 9px 18px;
+            font-size: 14px;
+            color: var(--secondary);
+        }
+
+        /* Acces */
+        .lp-acces {
+            padding: 90px 6vw 100px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 50%, rgba(0,242,234,0.14), transparent 65%);
+        }
+        .lp-acces .login-box { margin: 0 auto; max-width: 420px; }
+
+        /* Footer */
+        .lp-footer {
+            text-align: center;
+            padding: 40px 6vw;
+            color: var(--text-dim);
+            font-size: 13px;
+            border-top: 1px solid #222;
+        }
+        .lp-footer p { margin-bottom: 6px; }
+        .lp-footer a { color: var(--secondary); text-decoration: none; }
+        .lp-footer a:hover { text-decoration: underline; }
+
+        /* Pop-up proprietar */
+        .owner-pop {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.72);
+            backdrop-filter: blur(6px);
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s;
+        }
+        .owner-pop.show { opacity: 1; visibility: visible; }
+        .owner-pop-card {
+            position: relative;
+            width: 100%; max-width: 420px;
+            background: var(--dark-2);
+            border: 1px solid #333;
+            border-radius: 18px;
+            padding: 36px 28px 30px;
+            text-align: center;
+            box-shadow: 0 30px 90px rgba(0,242,234,0.22);
+            transform: translateY(18px) scale(0.97);
+            transition: transform 0.35s ease;
+        }
+        .owner-pop.show .owner-pop-card { transform: translateY(0) scale(1); }
+        .owner-pop-badge {
+            width: 60px; height: 60px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: #fff;
+        }
+        .owner-pop-card h3 { color: var(--text); font-size: 21px; margin-bottom: 10px; }
+        .owner-pop-card p { color: var(--text-dim); font-size: 14px; margin-bottom: 22px; }
+        .owner-pop-card strong { color: var(--text); }
+        .owner-pop-close {
+            position: absolute; top: 12px; right: 12px;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            border: 1px solid #333;
+            background: var(--dark-3);
+            color: var(--text-dim);
+            cursor: pointer; font-size: 15px;
+        }
+        .owner-pop-close:hover { color: var(--text); border-color: var(--secondary); }
+        .owner-pop .btn { padding: 13px 26px; font-size: 15px; }
+
+        /* Buton meniu mobil */
+        .lp-burger {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            border: 1px solid #3b3b3b;
+            border-radius: 10px;
+            background: var(--dark-3);
+            color: var(--text);
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .lp-two { grid-template-columns: 1fr; gap: 30px; }
+            .lp-two.reverse .lp-img { order: 0; }
+            .lp-hero { padding: 60px 6vw 50px; }
+            .lp-section { padding: 60px 6vw; }
+            .lp-stats { gap: 36px; padding: 40px 6vw; }
+            .lp-nav { padding: 14px 5vw; }
+            .lp-nav .btn-nav { padding: 9px 16px; font-size: 13px; }
+            .lp-burger { display: inline-flex; }
+
+            .lp-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                padding: 8px 5vw 14px;
+                background: rgba(10, 10, 10, 0.97);
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid #222;
+            }
+            .lp-nav.menu-open .lp-links { display: flex; }
+            .lp-links li { width: 100%; }
+            .lp-links a {
+                display: block;
+                padding: 13px 4px;
+                font-size: 15px;
+                border-bottom: 1px solid #1e1e1e;
+            }
+            .lp-links li:last-child a { border-bottom: none; }
+        }
+
+        @media (max-width: 560px) {
+            .nav-secondary { display: none; }
+            .lp-nav { padding: 12px 4vw; gap: 10px; }
+            .lp-logo { font-size: 15px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+            .lp-nav-right { flex-shrink: 0; }
+            .lp-nav .btn-nav { padding: 8px 14px; font-size: 12.5px; }
+            .lp-hero { padding: 46px 5vw 40px; }
+            .lp-hero h1 { font-size: clamp(30px, 8.5vw, 54px); }
+            .lp-cta { flex-direction: column; margin-bottom: 40px; }
+            .lp-cta .btn { width: 100%; }
+            .lp-section { padding: 46px 5vw; }
+            .lp-stats { gap: 26px 40px; padding: 34px 5vw; }
+            .lp-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .lp-cell { padding: 12px 13px; }
+            .lp-acces { padding: 60px 5vw 70px; }
+            .owner-pop-card { padding: 30px 20px 26px; }
+            .owner-pop .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="lp-nav">
+    <div class="lp-logo">🤖 Curs <span>AI Video</span></div>
+    <ul class="lp-links" id="lpMenu">
+        <li><a href="#despre">Despre</a></li>
+        <li><a href="#capitole">Capitole</a></li>
+        <li><a href="#continut">Ce înveți</a></li>
+        <li><a href="https://999.md/ro/profile/AllSubsMD" target="_blank" rel="noopener">AllSubsMD ↗</a></li>
+    </ul>
+    <div class="lp-nav-right">
+        <a href="index.html" class="btn-nav btn-nav-ghost nav-secondary">← Curs TikTok</a>
+        <a href="#acces" class="btn-nav btn-nav-ai">Accesează cursul AI</a>
+        <button class="lp-burger" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="lpMenu">☰</button>
+    </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="lp-hero">
+    <div class="lp-eyebrow">Ghid practic 2026</div>
+    <h1>Creează video cu AI — de la idee la clip gata de postat</h1>
+    <p>Un curs separat despre cum să folosești inteligența artificială ca să produci video la calitate profesională, fără cameră, studio sau echipă.</p>
+    <div class="lp-cta">
+        <a href="#acces" class="btn btn-primary">Deblochează cursul AI</a>
+        <a href="#despre" class="btn btn-ghost">Află mai multe</a>
+    </div>
+    <div class="lp-hero-img">
+        <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=futuristic%20AI%20video%20creation%20studio%20concept%2C%20glowing%20neural%20network%20brain%20merged%20with%20film%20clapperboard%20and%20play%20button%2C%20neon%20magenta%20and%20cyan%20on%20dark%20background%2C%20cinematic%203d%20render&image_size=landscape_16_9" alt="Curs AI Video">
+    </div>
+</header>
+
+<!-- ============ STATS ============ -->
+<section class="lp-stats">
+    <div class="lp-stat"><div class="num">15</div><div class="lbl">Capitole</div></div>
+    <div class="lp-stat"><div class="num">10+</div><div class="lbl">Unelte AI</div></div>
+    <div class="lp-stat"><div class="num">5-10s</div><div class="lbl">Clipuri generate</div></div>
+    <div class="lp-stat"><div class="num">30</div><div class="lbl">Zile plan</div></div>
+</section>
+
+<!-- ============ DESPRE ============ -->
+<section class="lp-section" id="despre">
+    <div class="lp-two">
+        <div>
+            <h2 class="lp-section-title">Un curs <span class="accent">100% despre AI</span></h2>
+            <p class="lp-section-sub" style="margin-bottom:24px;">Înveți să folosești inteligența artificială pentru text, imagini, video, voce și muzică — apoi să le combini într-un video complet, gata de publicat.</p>
+            <ul class="lp-list">
+                <li>AI pentru <strong>text, idei și scripturi</strong></li>
+                <li>AI pentru <strong>imagini și video</strong> (text/image-to-video)</li>
+                <li>AI pentru <strong>voce, muzică și avatare</strong></li>
+                <li>Reguli de <strong>etică și legislația TikTok</strong> pentru conținut AI</li>
+            </ul>
+        </div>
+        <div class="lp-img">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=abstract%20artificial%20intelligence%20concept%2C%20glowing%20digital%20brain%20with%20creative%20tools%20icons%20around%2C%20neon%20cyan%20and%20magenta%2C%20dark%20background%2C%20modern%203d%20illustration&image_size=portrait_4_3" alt="Inteligență artificială">
+        </div>
+    </div>
+</section>
+
+<!-- ============ CAPITOLE ============ -->
+<section class="lp-section" id="capitole">
+    <h2 class="lp-section-title">15 capitole, de la <span class="accent">prompt la video</span></h2>
+    <p class="lp-section-sub">Fiecare capitol te duce un pas mai aproape de un workflow AI complet și repetabil.</p>
+    <div class="lp-grid">
+        <div class="lp-cell"><b>1.</b> Ce este AI-ul generativ</div>
+        <div class="lp-cell"><b>2.</b> Cum „gândește" AI-ul</div>
+        <div class="lp-cell"><b>3.</b> AI pentru text &amp; idei</div>
+        <div class="lp-cell"><b>4.</b> Arta promptului</div>
+        <div class="lp-cell"><b>5.</b> AI pentru imagini</div>
+        <div class="lp-cell"><b>6.</b> AI pentru video</div>
+        <div class="lp-cell"><b>7.</b> AI pentru voce &amp; muzică</div>
+        <div class="lp-cell"><b>8.</b> Avataruri &amp; prezentatori AI</div>
+        <div class="lp-cell"><b>9.</b> Workflow: video cu AI</div>
+        <div class="lp-cell"><b>10.</b> Editare &amp; subtitrare auto</div>
+        <div class="lp-cell"><b>11.</b> Prompturi pentru video</div>
+        <div class="lp-cell"><b>12.</b> AI + algoritmul TikTok</div>
+        <div class="lp-cell"><b>13.</b> Etică &amp; reguli TikTok</div>
+        <div class="lp-cell"><b>14.</b> Monetizare &amp; nișe</div>
+        <div class="lp-cell"><b>15.</b> Plan 30 zile cu AI</div>
+    </div>
+</section>
+
+<!-- ============ CE ÎNVEȚI 1 : IMAGINI ============ -->
+<section class="lp-section" id="continut">
+    <div class="lp-two reverse">
+        <div>
+            <h2 class="lp-section-title">AI pentru <span class="accent">imagini</span></h2>
+            <ul class="lp-list">
+                <li>Generatorare de thumbnail-uri și B-roll</li>
+                <li>Personaje recurente cu referințe</li>
+                <li>Structura unui prompt vizual (subiect, stil, lumină, unghi)</li>
+                <li>Format vertical 9:16 pentru TikTok</li>
+            </ul>
+        </div>
+        <div class="lp-img">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=abstract%20AI%20image%20generation%20concept%2C%20glowing%20digital%20canvas%20with%20particles%20forming%20a%20picture%2C%20neon%20magenta%20and%20cyan%2C%20dark%20futuristic&image_size=landscape_4_3" alt="AI pentru imagini">
+        </div>
+    </div>
+</section>
+
+<!-- ============ CE ÎNVEȚI 2 : VIDEO ============ -->
+<section class="lp-section">
+    <div class="lp-two">
+        <div>
+            <h2 class="lp-section-title">AI pentru <span class="accent">video</span></h2>
+            <ul class="lp-list">
+                <li><strong>Text-to-video</strong> și <strong>image-to-video</strong></li>
+                <li>Clipuri de 5-10 secunde, combinate în video final</li>
+                <li>Controlul mișcării camerei (zoom, pan, orbit)</li>
+                <li>Verificarea fiecărui cadru (mâini, text, mișcări)</li>
+            </ul>
+        </div>
+        <div class="lp-img">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=futuristic%20AI%20video%20editing%20timeline%20interface%20with%20film%20frames%2C%20glowing%20neon%20cyan%20and%20magenta%2C%20dark%20ui%2C%20high%20detail&image_size=landscape_4_3" alt="AI pentru video">
+        </div>
+    </div>
+</section>
+
+<!-- ============ CE ÎNVEȚI 3 : VOCE & AVATARE ============ -->
+<section class="lp-section">
+    <div class="lp-two reverse">
+        <div>
+            <h2 class="lp-section-title">Voce, muzică &amp; <span class="accent">avatare AI</span></h2>
+            <ul class="lp-list">
+                <li>Voiceover natural fără microfon scump</li>
+                <li>Muzică originală generată pe baza unei descrieri</li>
+                <li>Prezentatori digitali pentru conținut explicativ</li>
+                <li>⚠️ Fără clonarea vocii/feței fără consimțământ</li>
+            </ul>
+        </div>
+        <div class="lp-img">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=microphone%20and%20sound%20waves%20with%20glowing%20AI%20neural%20network%2C%20digital%20avatar%20silhouette%2C%20neon%20magenta%20and%20cyan%20on%20dark%20background&image_size=landscape_4_3" alt="Voce și avatare AI">
+        </div>
+    </div>
+</section>
+
+<!-- ============ CE ÎNVEȚI 4 : WORKFLOW ============ -->
+<section class="lp-section">
+    <div class="lp-two">
+        <div>
+            <h2 class="lp-section-title">Workflow <span class="accent">complet</span></h2>
+            <ul class="lp-list">
+                <li>Idee → script → storyboard → imagini → animație</li>
+                <li>Voce → muzică → montaj → subtitrări → postare</li>
+                <li>Template reutilizabil pentru fiecare pas</li>
+                <li>Editare și subtitrare automată (CapCut &amp; similare)</li>
+            </ul>
+        </div>
+        <div class="lp-img">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=creative%20workflow%20diagram%20from%20idea%20to%20finished%20video%2C%20connected%20glowing%20neon%20nodes%2C%20dark%20futuristic%20interface%2C%20cyan%20and%20magenta&image_size=landscape_4_3" alt="Workflow video AI">
+        </div>
+    </div>
+</section>
+
+<!-- ============ TECH / DESIGN ============ -->
+<section class="lp-section">
+    <h2 class="lp-section-title">Ce <span class="accent">stăpânești</span> la final</h2>
+    <p class="lp-section-sub">Fără jargon inutil — doar ce îți trebuie ca să produci video cu AI.</p>
+    <div class="lp-chips">
+        <span class="lp-chip">Prompt engineering</span>
+        <span class="lp-chip">Text-to-video</span>
+        <span class="lp-chip">Image-to-video</span>
+        <span class="lp-chip">Generare imagini</span>
+        <span class="lp-chip">Voce AI</span>
+        <span class="lp-chip">Muzică AI</span>
+        <span class="lp-chip">Avatare digitale</span>
+        <span class="lp-chip">Subtitrare automată</span>
+        <span class="lp-chip">Etică &amp; reguli TikTok</span>
+    </div>
+</section>
+
+<!-- ============ ACCES ============ -->
+<section class="lp-acces" id="acces">
+    <div class="lp-eyebrow">Acces exclusiv</div>
+    <h2 class="lp-section-title">Deblochează <span class="accent">cursul AI complet</span></h2>
+    <p class="lp-section-sub" style="margin:0 auto 40px;">Introdu cheia de acces pentru a continua.</p>
+    <div class="login-box">
+        <h1>🤖 Curs AI Video</h1>
+        <p class="subtitle">Introdu cheia de acces pentru a continua</p>
+        <input type="password" id="cheie" placeholder="Introdu cheia de acces..." autocomplete="off">
+        <button onclick="verificaCheieAI()">Deblochează Cursul AI</button>
+        <p id="eroare" class="eroare"></p>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="lp-footer">
+    <p>© <script>document.write(new Date().getFullYear())</script> - Curs AI Video | Acces exclusiv pe bază de cheie</p>
+    <p>Site deținut de <a href="https://999.md/ro/profile/AllSubsMD" target="_blank" rel="noopener">AllSubsMD</a> · <a href="https://999.md/ro/profile/AllSubsMD" target="_blank" rel="noopener">999.md</a></p>
+    <p>Distribuie cu responsabilitate. Conținutul este educațional.</p>
+</footer>
+
+<!-- ============ POP-UP PROPRIETAR ============ -->
+<div class="owner-pop" id="ownerPop" role="dialog" aria-modal="true" aria-labelledby="ownerTitle">
+    <div class="owner-pop-card">
+        <button class="owner-pop-close" id="ownerPopClose" type="button" aria-label="Închide">✕</button>
+        <div class="owner-pop-badge" aria-hidden="true">★</div>
+        <h3 id="ownerTitle">Acest site este deținut de AllSubsMD</h3>
+        <p>Proiect realizat de <strong>AllSubsMD</strong>. Vezi profilul oficial pe 999.md.</p>
+        <a class="btn btn-primary" href="https://999.md/ro/profile/AllSubsMD" target="_blank" rel="noopener">Vezi profilul AllSubsMD</a>
+    </div>
+</div>
+
+<script>
+    // Acces curs AI — cheie și sesiune separate de cursul TikTok FYP
+    const CHEIE_SECRETA = "AICURS2025";
+
+    function hash(str) {
+        let h = 0;
+        for (let i = 0; i < str.length; i++) {
+            h = ((h << 5) - h) + str.charCodeAt(i);
+            h |= 0;
+        }
+        return h.toString();
+    }
+
+    function verificaCheieAI() {
+        const input = document.getElementById("cheie").value.trim();
+        const eroare = document.getElementById("eroare");
+
+        if (!input) { eroare.textContent = "⚠️ Te rog introdu o cheie!"; return; }
+
+        if (input === CHEIE_SECRETA) {
+            sessionStorage.setItem("acces_ai", hash(CHEIE_SECRETA));
+            window.location.href = "ai.html";
+        } else {
+            eroare.textContent = "❌ Cheie incorectă! Încearcă din nou.";
+            document.getElementById("cheie").value = "";
+            document.querySelector(".login-box").classList.add("shake");
+            setTimeout(() => document.querySelector(".login-box").classList.remove("shake"), 500);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const input = document.getElementById("cheie");
+        if (input) input.addEventListener("keypress", (e) => { if (e.key === "Enter") verificaCheieAI(); });
+    });
+
+    // Pop-up proprietar — apare o dată per sesiune
+    (function() {
+        const pop = document.getElementById('ownerPop');
+        const closeBtn = document.getElementById('ownerPopClose');
+        if (!pop) return;
+        const KEY = 'owner_pop_seen';
+
+        function openPop() { pop.classList.add('show'); }
+        function closePop() {
+            pop.classList.remove('show');
+            try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+        }
+
+        if (!sessionStorage.getItem(KEY)) setTimeout(openPop, 1200);
+
+        closeBtn.addEventListener('click', closePop);
+        pop.addEventListener('click', (e) => { if (e.target === pop) closePop(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePop(); });
+    })();
+
+    // Meniu mobil — navbar responsive
+    (function() {
+        const nav = document.querySelector('.lp-nav');
+        const burger = document.querySelector('.lp-burger');
+        if (!nav || !burger) return;
+        burger.addEventListener('click', () => {
+            const open = nav.classList.toggle('menu-open');
+            burger.setAttribute('aria-expanded', String(open));
+            burger.textContent = open ? '✕' : '☰';
+        });
+        document.querySelectorAll('.lp-links a').forEach(a => {
+            a.addEventListener('click', () => {
+                nav.classList.remove('menu-open');
+                burger.setAttribute('aria-expanded', 'false');
+                burger.textContent = '☰';
+            });
+        });
+    })();
+</script>
+</body>
+</html>
