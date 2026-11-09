@@ -25,7 +25,7 @@ function verificaCheie() {
     if (input === CHEIE_SECRETA) {
         // Salvăm în sessionStorage un token
         sessionStorage.setItem("acces_curs", hash(CHEIE_SECRETA));
-        window.location.href = "curs.html";
+        window.location.href = "/curs.html";
     } else {
         eroare.textContent = "❌ Cheie incorectă! Încearcă din nou.";
         document.getElementById("cheie").value = "";
