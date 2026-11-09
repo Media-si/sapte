@@ -8,7 +8,7 @@
     <script>
         // Protecție acces
         (function() {
-            const CHEIE_SECRETA = "GHEORGHEYT";
+            const CHEIE_SECRETA = "TIKTOK2025VIP";
             function hash(str) {
                 let h = 0;
                 for (let i = 0; i < str.length; i++) {
@@ -26,9 +26,15 @@
 <body class="curs-body">
 
 <!-- ============ SIDEBAR CU NAVIGARE ============ -->
-<nav class="sidebar">
-    <h2>📖 Cuprins</h2>
-    <ul>
+<nav class="sidebar" aria-label="Navigare curs">
+    <div class="sidebar-header">
+        <h2>📖 Cuprins</h2>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu">
+            <span class="menu-toggle-text">Deschide cuprins</span>
+            <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+        </button>
+    </div>
+    <ul id="course-menu">
         <li><a href="#cap1">1. Ce este FYP?</a></li>
         <li><a href="#cap2">2. Algoritmul TikTok</a></li>
         <li><a href="#cap3">3. Setup Cont & Niche</a></li>
@@ -535,13 +541,29 @@ Final: întrebare pentru comentarii</code></pre>
 </main>
 
 <script>
-    // Smooth scroll pentru link-uri din sidebar
+    // Navigare cu scroll fluid și meniu compact pe telefon
+    const sidebar = document.querySelector('.sidebar');
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    menuToggle.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('menu-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.querySelector('.menu-toggle-text').textContent =
+            isOpen ? 'Închide cuprinsul' : 'Deschide cuprins';
+        menuToggle.querySelector('.menu-toggle-icon').textContent = isOpen ? '✕' : '☰';
+    });
+
     document.querySelectorAll('.sidebar a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            if (window.matchMedia('(max-width: 700px)').matches) {
+                sidebar.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.querySelector('.menu-toggle-text').textContent = 'Deschide cuprins';
+                menuToggle.querySelector('.menu-toggle-icon').textContent = '☰';
             }
         });
     });
