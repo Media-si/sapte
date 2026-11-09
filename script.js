@@ -1,7 +1,7 @@
 // ============================================
 // MODIFICĂ AICI CHEIA TA SECRETĂ
 // ============================================
-const CHEIE_SECRETA = "2026"; // <- SCHIMBĂ CU CE VREI TU
+const CHEIE_SECRETA = "GHEORGHEYT"; // <- SCHIMBĂ CU CE VREI TU
 
 // Hash simplu pentru a nu stoca cheia în clar în sesiune
 function hash(str) {
