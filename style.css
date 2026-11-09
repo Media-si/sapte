@@ -1,0 +1,310 @@
+/* ============ RESET & VARIABILE ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff0050;
+    --secondary: #00f2ea;
+    --dark: #0a0a0a;
+    --dark-2: #161616;
+    --dark-3: #222;
+    --text: #f1f1f1;
+    --text-dim: #a0a0a0;
+    --success: #4ade80;
+    --error: #ff4444;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* ============ LOGIN PAGE ============ */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a1a 100%);
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-box {
+    background: var(--dark-2);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(255, 0, 80, 0.15);
+    text-align: center;
+}
+
+.login-box h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-box .subtitle {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--dark-3);
+    border: 2px solid #333;
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 16px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.login-box button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--primary), #ff4060);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.login-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 80, 0.4);
+}
+
+.eroare {
+    color: var(--error);
+    margin-top: 14px;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+/* Shake animation pentru cheie greșită */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+/* ============ CURS PAGE ============ */
+.curs-body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background: var(--dark-2);
+    padding: 30px 20px;
+    border-right: 1px solid #333;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 6px;
+}
+
+.sidebar a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 12px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.sidebar a:hover {
+    background: var(--dark-3);
+    color: var(--secondary);
+    padding-left: 16px;
+}
+
+/* Conținut principal */
+.continut {
+    padding: 50px 60px;
+    max-width: 1000px;
+}
+
+.continut > h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intro {
+    color: var(--text-dim);
+    font-size: 17px;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333;
+}
+
+/* Capitole */
+.capitol {
+    margin-bottom: 60px;
+    padding: 30px;
+    background: var(--dark-2);
+    border-radius: 16px;
+    border-left: 4px solid var(--primary);
+    scroll-margin-top: 30px;
+}
+
+.capitol h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.capitol h3 {
+    font-size: 19px;
+    margin: 24px 0 12px;
+    color: var(--secondary);
+}
+
+.capitol h4 {
+    font-size: 16px;
+    margin: 18px 0 10px;
+    color: var(--primary);
+}
+
+.capitol p {
+    margin-bottom: 14px;
+    color: #d0d0d0;
+}
+
+.capitol ul, .capitol ol {
+    margin: 12px 0 18px 24px;
+}
+
+.capitol li {
+    margin-bottom: 8px;
+    color: #d0d0d0;
+}
+
+.capitol strong {
+    color: var(--text);
+}
+
+.capitol pre {
+    background: #000;
+    padding: 18px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 18px 0;
+    border: 1px solid #2a2a2a;
+}
+
+.capitol code {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: var(--secondary);
+    line-height: 1.8;
+}
+
+.capitol p code {
+    background: #000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.final-note {
+    background: linear-gradient(90deg, rgba(255, 0, 80, 0.15), rgba(0, 242, 234, 0.1));
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--primary);
+    margin-top: 24px;
+}
+
+.footer-curs {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+    .curs-body {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+    
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .sidebar li {
+        margin: 0;
+    }
+    
+    .continut {
+        padding: 30px 20px;
+    }
+    
+    .continut > h1 {
+        font-size: 26px;
+    }
+    
+    .capitol {
+        padding: 20px;
+    }
+}
